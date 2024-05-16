@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+<form action="{% url 'editar_profesor' profesor.id %}" method="POST" class="w-auto d-flex align-items-center justify-content-center flex-column">
+    {% csrf_token %}
+    <p>Nombre</p>
+    {{mi_formulario.nombre}}
+    <p>Dni</p>
+    {{mi_formulario.dni}}
+    <p>Curso</p>
+    {{mi_formulario.curso}}
+    <button class="btn btn-outline-info">Enviar</button>
+
+</form>
+    
+
+
+
+{% endblock %}

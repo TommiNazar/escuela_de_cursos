@@ -1,0 +1,24 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+{% block contenido %}  
+
+
+    {% if profesores %}
+
+        <ul>
+        {% for profesor in profesores %}
+            <li>Nombre: {{profesor.nombre}}</li>
+            <li>Dni: {{profesor.dni}}</li>
+            <li>Curso: {{profesor.curso}}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron profesor con ese nombre</p>
+    {% endif %}
+
+    <a class="btn btn-outline-info" href="{% url 'profesores' %}">volver</a>
+
+{% endblock %}

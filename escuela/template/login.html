@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+    <h2 class="text-center">Ingrese sus datos</h2>
+
+    <form action="" method="POST" class="w-auto d-flex align-items-center justify-content-center flex-column">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button>Enviar</button>
+
+    </form>
+
+{% endblock %}

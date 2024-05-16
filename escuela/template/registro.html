@@ -1,0 +1,16 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+    <h2 class="text-center">Nuevo Usuario</h2>
+
+    <form action="register" method="POST" class="d-flex align-items-center justify-content-center flex-column">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Registrar</button>
+    </form>
+
+{% endblock %}

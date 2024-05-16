@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+    <form action="alumno_formulario" method="POST" class=" w-auto d-flex align-items-center justify-content-center flex-column">
+        {% csrf_token %}
+        <p>Nombre:</p>
+        <input type="text" name="nombre" required>
+        <p>Dni</p>
+        <input type="number" name="dni" required>
+        
+        <button>Enviar</button>
+
+        <br>
+        <a class="btn btn-outline-info" href="{% url 'alumnos' %}">volver</a>
+    </form>
+    
+
+
+
+{% endblock %}

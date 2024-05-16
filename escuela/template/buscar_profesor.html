@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+{% block contenido %}  
+
+    <h2 class="text-center">Buscar Profesor</h2>
+
+    <form action="buscar_p" method="GET" class=" w-auto d-flex align-items-center justify-content-center flex-column">
+        <p>Nombre</p>
+        <input type="text" name="nombre" id="nombre">
+        <button>Buscar</button>
+
+    </form> 
+    <br>
+    <div class="d-flex align-items-center justify-content-center">
+        <a class="btn btn-outline-info" href="{% url 'profesores' %}">volver</a>
+    </div>
+    
+
+
+{% endblock %}

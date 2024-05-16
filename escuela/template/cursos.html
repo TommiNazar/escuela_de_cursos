@@ -1,0 +1,68 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+    <main class="container">
+        <h1 class="text-xl-center title"> Cursos </h1>  
+        
+
+        <table class="table">
+            <thead>
+                <tr>
+                    {% if request.user.is_authenticated %}
+                    <th>id</th>
+                    {% endif %}
+                    <th>nombre</th>
+                    <th>camada</th>
+                </tr>            
+            </thead>
+            <tbody>
+                {% for n in cursos %}
+                <tr>
+                    {% if request.user.is_authenticated %}
+                    <td>{{n.id}}</td>
+                    {% endif %}
+                    <td>{{n.nombre}}</td>
+                    <td>{{n.camada}}</td>
+
+                    {% if request.user.is_authenticated %}
+                    <td><a href="{% url 'elimina_curso' n.id %}" class="btn btn-outline-danger">BORRAR</a></td>
+                    <td><a href="{% url 'editar_curso' n.id %}" class="btn btn-outline-warning">EDITAR</a></td>
+                    {% endif %}
+                    
+                </tr>
+
+                {% endfor %}
+                
+            </tbody>
+
+
+        </table>
+
+        <br>
+        <div class="d-flex justify-content-center flex-column">
+            <h2 class="text-center">buscar curso</h2>
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'buscar_curso'%}" class="btn btn-outline-success">buscar curso</a>
+            </div>
+            
+        </div>
+        <br>
+
+        {% if request.user.is_authenticated %}
+        <div class="d-flex justify-content-center flex-column">
+            <h2 class="text-center">dar de alta un curso</h2>
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-outline-info w-auto p-3  " href="{% url 'altas_cursos' %}">alta curso</a>
+            </div>
+            
+        </div>
+        {% endif %}
+
+
+    </main>
+    
+
+{% endblock %}

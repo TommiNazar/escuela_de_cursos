@@ -1,0 +1,62 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+{% block contenido %}
+    <main class="container">
+        <h1 class="text-xl-center title"> Profesores </h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>nombre</th>
+                    <th>curso</th>
+                </tr>            
+            </thead>
+            <tbody>
+                {% for n in profesores %}
+                <tr>
+                    <td>{{n.id}}</td>
+                    <td>{{n.nombre}}</td>
+                    <td>{{n.curso}}</td>
+
+                    {% if request.user.is_authenticated %}
+                    <td><a href="{% url 'elimina_profesor' n.id %}" class="btn btn-outline-danger">BORRAR</a></td>
+                    <td><a href="{% url 'editar_profesor' n.id %}" class="btn btn-outline-warning">EDITAR</a></td>
+                    {% endif %}
+                    
+                </tr>
+
+                {% endfor %}
+                
+            </tbody>
+
+
+        </table>
+
+
+        <br>
+        <div class="d-flex justify-content-center flex-column">
+            <h2 class="text-center">buscar profesor</h2>
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'buscar_profesor'%}" class="btn btn-outline-success">buscar profesor</a>
+            </div>
+            
+        </div>
+        <br>
+
+
+        <div class="d-flex justify-content-center flex-column">
+            <h2 class="text-center">dar de alta un profesor</h2>
+            <div class="d-flex justify-content-center">
+                <a class="btn btn-outline-info" href="{% url 'altas_profesores' %}">alta profesor</a>
+            </div>
+        
+        </div>
+        
+
+    </main>
+    
+
+{% endblock %}
